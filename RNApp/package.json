@@ -15,7 +15,8 @@
     "react-native-gesture-handler": "^1.2.1",
     "react-native-keyboard-spacer": "^0.4.1",
     "react-native-meteor": "^1.4.0",
-    "react-navigation": "^3.11.0"
+    "react-navigation": "^3.11.0",
+    "toggle-switch-react-native": "^2.0.2"
   },
   "devDependencies": {
     "@babel/core": "^7.4.5",
