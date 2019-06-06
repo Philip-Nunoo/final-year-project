@@ -12,9 +12,12 @@ import NoteRow from '../components/NoteRow';
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: colors.background,
+  },
+  noteLogs: {
+    flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: colors.background,
   },
   text: {
     fontSize: 13,
@@ -39,7 +42,7 @@ const Home = ({ navigation, loading, notes }) => {
         ))}
       </ScrollView>
       :
-        <View>
+        <View style={styles.noteLogs}>
           <Text style={styles.text}>
             You have No Logs
           </Text>
