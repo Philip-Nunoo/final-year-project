@@ -20,5 +20,16 @@ export default StyleSheet.create({
   inputWrapper: {
     backgroundColor: colors.inputBackground,
     width: window.width,
+    marginBottom: 4,
+  },
+  multilineInput: {
+    textAlignVertical: "top",
+    alignItems: 'flex-start',
+    borderRadius: 5,
+    backgroundColor: colors.inputBackground,
+    marginLeft: 10,
+    marginVertical: 5,
+    paddingVertical: 5,
+    paddingHorizontal: 15,
   },
 });

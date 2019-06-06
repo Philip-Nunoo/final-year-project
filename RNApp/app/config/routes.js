@@ -12,6 +12,7 @@ import SignIn from '../screens/SignIn';
 
 import homeIcon from '../images/home-icon.png';
 import profileIcon from '../images/user-icon.png';
+import { AddLog } from '../screens/Logs';
 
 export const AuthStack = createAppContainer(createStackNavigator({
   SignIn: {
@@ -36,6 +37,12 @@ export const HomeStack = createStackNavigator({
     screen: Details,
     navigationOptions: {
       headerTitle: 'Details',
+    },
+  },
+  AddLog: {
+    screen: AddLog,
+    navigationOptions: {
+      headerTitle: 'Lodge Complaint'
     },
   },
 });

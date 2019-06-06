@@ -9,7 +9,7 @@ const GenericTextInput = (props) => {
     <View>
       {borderTop ? <View style={styles.divider} /> : null}
       <TextInput
-        style={styles.input}
+        style={props.multiline ? styles.multilineInput : styles.input}
         autoCapitalize="none"
         autoCorrect={false}
         {...props}
@@ -24,6 +24,7 @@ GenericTextInput.propTypes = {
 
 GenericTextInput.defaultProps = {
   borderTop: false,
+  multiline: false,
 };
 
 export default GenericTextInput;

@@ -48,7 +48,7 @@ const Home = ({ navigation, loading, notes }) => {
           </Text>
           <Button
             text='Make Complaint'
-            onPress={() => {}}
+            onPress={() => navigation.navigate('AddLog')}
           />
         </View>
       }
