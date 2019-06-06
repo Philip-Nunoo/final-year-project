@@ -1,8 +1,11 @@
 import { Mongo } from 'meteor/mongo';
+import noteSchema from './schema';
 
 class NotesCollection extends Mongo.Collection {
     constructor() {
         super('notes');
+
+        this.attachSchema(noteSchema);
     }
 }
 
