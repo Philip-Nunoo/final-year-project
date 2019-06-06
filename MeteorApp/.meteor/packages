@@ -24,3 +24,5 @@ underscore
 
 reywood:publish-composite
 mdg:validated-method
+aldeed:collection2@3.0.0
+aldeed:schema-deny
