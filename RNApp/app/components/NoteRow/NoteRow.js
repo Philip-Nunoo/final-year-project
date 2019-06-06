@@ -1,19 +1,31 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { View, Text } from 'react-native';
+import { View, Text, StyleSheet } from 'react-native';
 
-const NoteRow = ({ description }) => (
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    alignItems: 'flex-start',
+  }
+});
+
+const NoteRow = ({ title, details }) => (
+  <View style={styles.container}>
     <View>
-        <Text>{description}</Text>
+      <Text>{title}</Text>
+      <Text>{details}</Text>
     </View>
+  </View>
 );
 
 NoteRow.propTypes = {
-    description: PropTypes.string,
+  details: PropTypes.string,
+  title: PropTypes.string,
 };
 
 NoteRow.defaultProps = {
-    description: null
-}
+  details: null,
+  title: null,
+};
 
 export default NoteRow;

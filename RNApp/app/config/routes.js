@@ -27,12 +27,7 @@ export const AuthStack = createAppContainer(createStackNavigator({
  */
 
 export const HomeStack = createStackNavigator({
-  Home: {
-    screen: Home,
-    navigationOptions: {
-      headerTitle: 'Home',
-    },
-  },
+  Home: { screen: Home },
   Details: {
     screen: Details,
     navigationOptions: {

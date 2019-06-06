@@ -54,6 +54,10 @@ const Home = ({ navigation, loading, notes }) => {
       }
     </View>
   );
+}
+
+Home.navigationOptions = {
+  headerRight: <Button text="Add" />
 };
 
 Home.propTypes = {
@@ -71,7 +75,7 @@ Home.defaultProps = {
   notes: [],
 };
 
-export default createContainer(() => {
+const container = createContainer(() => {
   const handle = Meteor.subscribe('notes.all');
 
   return {
@@ -79,3 +83,17 @@ export default createContainer(() => {
     notes: Meteor.collection('notes').find() || [],
   };
 }, Home);
+
+container.navigationOptions = ({ navigation }) => {
+  return ({
+    headerTitle: 'Home',
+    headerRight: (
+      <Button
+        text="Add"
+        onPress={() => navigation.navigate('AddLog')}
+      />
+    ),
+  });
+}
+
+export default container;
