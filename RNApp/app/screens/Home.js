@@ -39,7 +39,11 @@ const Home = ({ navigation, loading, notes }) => {
       {notes.length > 0 ?
       <ScrollView>
         {notes.map((note) => (
-          <NoteRow key={note._id} {...note} />
+          <NoteRow
+            key={note._id}
+            {...note}
+            navigation={navigation}
+          />
         ))}
       </ScrollView>
       :
