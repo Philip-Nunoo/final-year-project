@@ -16,3 +16,18 @@ export const addNote = new ValidatedMethod({
     return noteId;
   },
 });
+
+export const getNote = new ValidatedMethod({
+  name: 'note.get',
+  validate: null,
+  run(noteId) {
+    if (!this.userId) {
+      throw new Meteor.Error('un-authorized', 'Unauthorized');
+    }
+    const note = Notes.findOne(noteId);
+    if (!note) {
+      throw new Meteor.Error('note-not-found', 'What you are looking for has been removed');
+    }
+    return note;
+  }
+})
