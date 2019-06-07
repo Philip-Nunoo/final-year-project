@@ -12,7 +12,7 @@ import SignIn from '../screens/SignIn';
 
 import homeIcon from '../images/home-icon.png';
 import profileIcon from '../images/user-icon.png';
-import { AddLog, ViewLog } from '../screens/Logs';
+import { AddLog, ViewLog, ViewMessages } from '../screens/Logs';
 
 export const AuthStack = createAppContainer(createStackNavigator({
   SignIn: {
@@ -45,7 +45,13 @@ export const HomeStack = createStackNavigator({
     navigationOptions: {
       headerTitle: 'Issue Detail'
     }
-  }
+  },
+  ViewMessages: {
+    screen: ViewMessages,
+    navigationOptions: {
+      headerTitle: 'Chat'
+    },
+  },
 });
 
 export const ProfileStack = createStackNavigator({

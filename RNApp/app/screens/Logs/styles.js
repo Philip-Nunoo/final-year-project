@@ -37,11 +37,27 @@ export const viewLogStyles = StyleSheet.create({
     fontSize: 30,
     color: '#000',
     marginBottom: 10,
+    padding: 5,
+    borderBottomWidth: 1,
+    borderBottomColor: '#C0C0C0',
   },
   details: {
-    // color: '#C0C0C0',
-    fontSize: 18,
+    fontSize: 13,
     textAlign: 'justify',
     lineHeight: 20,
-  }
+    padding: 5,
+  },
+  mail: {
+    padding: 10,
+    backgroundColor: '#0E8A9B',
+    flexDirection: 'row',
+    justifyContent: 'space-between'
+  },
+  mailText: {
+    color: '#FFFFFF',
+    fontSize: 12,
+  },
+  linkText: {
+    fontWeight: '700',
+  },
 });

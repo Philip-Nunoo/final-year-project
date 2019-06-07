@@ -5,6 +5,7 @@ import moment from 'moment';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import Loading from '../../components/Loading';
 import { viewLogStyles as styles } from './styles';
+import Link from '../../components/Link';
 
 class ViewLog extends React.Component {
   static navigationOptions = ({ navigation }) => {
@@ -87,19 +88,31 @@ class ViewLog extends React.Component {
 
   render() {
     const { log, loading, error } = this.state;
+    const { navigation } = this.props;
 
     if (loading) {
       return <Loading />;
     };
+    const logId = navigation.getParam('id');
 
     return (
       <View style={styles.container}>
-        {error &&
-        <Text>{error}
-        </Text>}
+        {error && <Text>{error}</Text>}
         {
           log ?
           <React.Fragment>
+            {log.mail &&
+              <View style={styles.mail}>
+                <Text style={[styles.mailText]}>
+                  This issue has message
+                </Text>
+                <Link
+                  style={[styles.mailText, styles.linkText]}
+                  text="View messages"
+                  onPress={() => navigation.navigate('ViewMessages', { id: logId })}
+                />
+              </View>
+            }
             <View style={styles.body}>
               <Text style={styles.title}>
                 {log.title}
