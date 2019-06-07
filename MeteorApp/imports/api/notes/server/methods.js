@@ -30,4 +30,19 @@ export const getNote = new ValidatedMethod({
     }
     return note;
   }
-})
+});
+
+export const removeNote = new ValidatedMethod({
+  name: 'note.remove',
+  validate: null,
+  run(noteId) {
+    if (!this.userId) {
+      throw new Meteor.Error('un-authorized', 'Unauthorized');
+    }
+    const note = Notes.remove(noteId);
+    if (!note) {
+      throw new Meteor.Error('note-not-found', 'What you are looking for has been removed');
+    }
+    return note;
+  }
+});
