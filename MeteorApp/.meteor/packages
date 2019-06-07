@@ -27,3 +27,4 @@ mdg:validated-method
 aldeed:collection2@3.0.0
 aldeed:schema-deny
 percolate:migrations
+matb33:collection-hooks
