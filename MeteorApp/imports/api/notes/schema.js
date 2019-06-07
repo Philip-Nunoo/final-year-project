@@ -16,7 +16,27 @@ export const noteFormSchema = new SimpleSchema({
   },
 });
 
+export const mailSchema = new SimpleSchema({
+  messageId: { type: String },
+  subject: { type: String },
+  messages: { type: Array },
+  'messages.$': { type: Object },
+  'messages.$.userId': {
+    type: String,
+    regEx: SimpleSchema.RegEx.IP,
+  },
+  message: { type: String },
+  type: {
+    type: String,
+    allowedValues: ['out', 'in'],
+  },
+});
+
 const noteSchema = new SimpleSchema({
+  mail: {
+    type: mailSchema,
+    optional: true,
+  },
   createdBy: {
     type: String,
     regEx: SimpleSchema.RegEx.Id,
@@ -45,4 +65,5 @@ const noteSchema = new SimpleSchema({
   },
 });
 
-export default noteSchema.extend(noteFormSchema);
+noteSchema.extend(noteFormSchema);
+export default noteSchema;
