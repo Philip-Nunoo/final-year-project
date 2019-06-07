@@ -68,9 +68,11 @@ Home.propTypes = {
     navigate: PropTypes.func.isRequired,
   }).isRequired,
   loading: PropTypes.bool,
-  notes: PropTypes.shape({
-    _id: PropTypes.string,
-  }),
+  notes: PropTypes.arrayOf(
+    PropTypes.shape({
+      _id: PropTypes.string,
+    })
+  ),
 };
 
 Home.defaultProps = {

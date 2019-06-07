@@ -18,9 +18,10 @@ class AddLog extends React.Component {
   };
 
   state = {
-    doc: {},
+    doc: {
+      issueReport: false,
+    },
     error: null,
-    issueReport: false,
   };
 
   componentWillMount() {
@@ -66,9 +67,12 @@ class AddLog extends React.Component {
 
   addLog = () => {
     const { navigation } = this.props;
+    const { doc } = this.state;
 
     if (this.validInput()) {
-      Meteor.call('note.add', this.state.doc, err => {
+      console.log('doc', doc);
+      
+      Meteor.call('note.add', doc, err => {
         if (err) {
           this.handleError(err.reason);
         } else {
@@ -87,6 +91,7 @@ class AddLog extends React.Component {
         <InputWrapper>
           <GenericTextInput
             placeholder="Title"
+            autoCapitalize='sentences'
             onChangeText={title => this.setState({ doc: {
               ...doc,
               title
@@ -98,6 +103,7 @@ class AddLog extends React.Component {
             placeholder="Details"
             multiline
             numberOfLines={15}
+            autoCapitalize='sentences'
             onChangeText={details => this.setState({ doc: {
               ...doc,
               details
@@ -109,9 +115,10 @@ class AddLog extends React.Component {
             isOn={doc.issueReport}
             label='Send issue to agent'
             labelStyle={{}}
-            onToggle={issueReport => this.setState({
-              doc: { ...doc, issueReport }
-            })}
+            onToggle={issueReport => this.setState({ doc: {
+              ...doc,
+              issueReport
+            }})}
           />
         </View>
 
