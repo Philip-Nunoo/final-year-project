@@ -42,7 +42,14 @@ class EditLog extends React.Component {
     const id = navigation.getParam('id');
     const doc = navigation.getParam('log');
     if (doc) {
-      this.setState({ doc, id });
+      this.setState({
+        id,
+        doc: {
+          title: doc.title,
+          details: doc.details,
+          issueReport: doc.issueReport,
+        },
+      });
     }
   }
 
@@ -81,10 +88,10 @@ class EditLog extends React.Component {
 
   editLog = () => {
     const { navigation } = this.props;
-    const { id, doc } = this.state;
+    const { id, doc: note } = this.state;
 
     if (this.validInput()) {
-      Meteor.call('note.edit', id, doc, err => {
+      Meteor.call('note.edit', { id, note }, err => {
         if (err) {
           this.handleError(err.reason);
         } else {

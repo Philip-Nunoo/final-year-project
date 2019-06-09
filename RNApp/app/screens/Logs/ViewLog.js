@@ -29,11 +29,12 @@ class ViewLog extends React.Component {
     error: null,
   };
 
-  componentDidMount() {
+  componentWillMount() {
     this.getNoteInfo(this.props);
     this.props.navigation.setParams({ deleteLog: this._deleteLog });
   }
   
+
   _deleteLog = () => {
     const logId = this.props.navigation.getParam('id');
 
