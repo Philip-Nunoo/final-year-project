@@ -32,6 +32,19 @@ export const getNote = new ValidatedMethod({
   }
 });
 
+export const editNote = new ValidatedMethod({
+  name: 'note.edit',
+  validate: null,
+  run({ id, note }) {
+    if (!this.userId) {
+      throw new Meteor.Error('un-authorized', 'Unauthorized');
+    }
+    Notes.update(id, { $set: { ...note } });
+    
+    return id;
+  }
+});
+
 export const removeNote = new ValidatedMethod({
   name: 'note.remove',
   validate: null,
