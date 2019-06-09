@@ -60,4 +60,21 @@ export const viewLogStyles = StyleSheet.create({
   linkText: {
     fontWeight: '700',
   },
+  actionButtonIcon: {
+    fontSize: 20,
+    height: 22,
+    color: 'white',
+  },
+});
+
+export const viewMessageStyles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: colors.background,
+  },
+  bottom: {
+    position: 'absolute',
+    bottom: 0,
+    width: '100%',
+  },
 });

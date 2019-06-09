@@ -3,6 +3,8 @@ import { View, Text, Alert } from 'react-native';
 import Meteor from 'react-native-meteor';
 import moment from 'moment';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import Ionicon from 'react-native-vector-icons/Ionicons';
+import ActionButton from 'react-native-action-button';
 import Loading from '../../components/Loading';
 import { viewLogStyles as styles } from './styles';
 import Link from '../../components/Link';
@@ -11,14 +13,14 @@ class ViewLog extends React.Component {
   static navigationOptions = ({ navigation }) => {
     return ({
       headerTitle: 'Home',
-      headerRight: (
-        <Icon
-          name="delete"
-          size={28}
-          style={{ marginRight: 10, color: '#000' }}
-          onPress={navigation.getParam('deleteLog')}
-        />
-      ),
+      // headerRight: (
+      //   <Icon
+      //     name="delete"
+      //     size={28}
+      //     style={{ marginRight: 10, color: '#000' }}
+      //     onPress={navigation.getParam('deleteLog')}
+      //   />
+      // ),
     });
   }
   state = {
@@ -124,6 +126,22 @@ class ViewLog extends React.Component {
             <View style={styles.body}>
               <Text>{moment(log.createdAt).format("LLLL")}</Text>
             </View>
+            <ActionButton buttonColor="#1abc9c">
+              <ActionButton.Item
+                buttonColor='#9b59b6'
+                title="Edit"
+                onPress={() => navigation.navigate('EditLog', { id: logId, log })}
+              >
+                <Ionicon name="md-create" style={styles.actionButtonIcon} />
+              </ActionButton.Item>
+              <ActionButton.Item
+                buttonColor='rgba(231,76,60,1)'
+                title="Remove"
+                onPress={this._deleteLog}
+              >
+                <Icon name="delete" style={styles.actionButtonIcon} />
+              </ActionButton.Item>
+            </ActionButton>
           </React.Fragment>
           : <Text>No log found</Text>
         }
