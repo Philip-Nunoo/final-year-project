@@ -10,7 +10,15 @@ export const noteFormSchema = new SimpleSchema({
     type: String,
     max: 2000
   },
+  anonymous: {
+    type: Boolean,
+    defaultValue: false,
+  },
   issueReport: {
+    type: Boolean,
+    defaultValue: false,
+  },
+  send: {
     type: Boolean,
     defaultValue: false,
   },

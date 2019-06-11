@@ -10,7 +10,7 @@ class NotesCollection extends Mongo.Collection {
     this.attachSchema(noteSchema);
 
     this.before.insert((userId, doc) => {
-      if (doc.issueReport) {
+      if (doc.send) {
         const user = Meteor.users.findOne(userId);
         const from = user.emails[0].address;
         const to = 'ketay99@gmail.com';
