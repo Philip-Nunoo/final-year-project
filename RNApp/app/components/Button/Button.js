@@ -5,8 +5,12 @@ import styles from './styles';
 
 const Button = (props) => {
   const { text, onPress } = props;
+
   return (
-    <TouchableOpacity style={styles.button} onPress={onPress}>
+    <TouchableOpacity
+      style={[styles.button, props.style]}
+      onPress={onPress}
+    >
       <Text style={styles.buttonText}>
         {text}
       </Text>

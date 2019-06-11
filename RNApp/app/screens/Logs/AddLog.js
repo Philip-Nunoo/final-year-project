@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { View, Text } from 'react-native';
+import { View, Text, Alert } from 'react-native';
 import KeyboardSpacer from 'react-native-keyboard-spacer';
 import Meteor from 'react-native-meteor';
 import ToggleSwitch from 'toggle-switch-react-native';
@@ -20,6 +20,7 @@ class AddLog extends React.Component {
   state = {
     doc: {
       issueReport: false,
+      anonymous: false,
     },
     error: null,
   };
@@ -70,8 +71,6 @@ class AddLog extends React.Component {
     const { doc } = this.state;
 
     if (this.validInput()) {
-      console.log('doc', doc);
-      
       Meteor.call('note.add', doc, err => {
         if (err) {
           this.handleError(err.reason);
@@ -79,6 +78,32 @@ class AddLog extends React.Component {
           navigation.goBack();
         }
       })
+    }
+  }
+
+  saveAndSend = () => {
+    if (this.validInput()) {
+      Alert.alert(
+        'Send Report',
+        'This would send an email to our standby coordinators to assist you. Do you want to continue?',
+        [
+          {
+            text: 'Cancel',
+            style: 'cancel',
+          },
+          {
+            text: 'Yes',
+            onPress: () => {
+              const { doc } = this.state;
+
+              this.setState({ doc: { ...doc, send: true } }, () => {
+                this.addLog();
+              });
+            },
+          },
+        ],
+        { cancelable: false },
+      );
     }
   }
 
@@ -112,12 +137,12 @@ class AddLog extends React.Component {
         </InputWrapper>
         <View style={{ marginTop: 10 }}>
           <ToggleSwitch
-            isOn={doc.issueReport}
-            label='Send issue to agent'
+            isOn={doc.anonymous}
+            label='Make anonymous'
             labelStyle={{}}
-            onToggle={issueReport => this.setState({ doc: {
+            onToggle={anonymous => this.setState({ doc: {
               ...doc,
-              issueReport
+              anonymous
             }})}
           />
         </View>
@@ -138,10 +163,16 @@ class AddLog extends React.Component {
             {error}
           </Text>
         </View>
-        <View style={styles.button}>
+        <View style={styles.buttonGroup}>
           <Button
-            text="Create"
+            text="Save"
             onPress={this.addLog}
+            style={styles.button}
+          />
+          <Button
+            text="Save &amp; Send"
+            onPress={this.saveAndSend}
+            style={styles.button}
           />
         </View>
         <KeyboardSpacer />

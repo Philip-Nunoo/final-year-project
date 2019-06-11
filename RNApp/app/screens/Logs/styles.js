@@ -21,6 +21,15 @@ export const addLogStyles = StyleSheet.create({
     color: colors.errorText,
     fontSize: 14,
   },
+  buttonGroup:{
+    // justifyContent: 'space-evenly',
+    position: 'absolute',
+    bottom: 0,
+    flexDirection: 'row',
+  },
+  button: {
+    flex: 1,
+  },
 });
 
 export const viewLogStyles = StyleSheet.create({
