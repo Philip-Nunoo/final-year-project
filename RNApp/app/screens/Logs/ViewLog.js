@@ -5,6 +5,7 @@ import moment from 'moment';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import Ionicon from 'react-native-vector-icons/Ionicons';
 import ActionButton from 'react-native-action-button';
+import { withNavigation } from "react-navigation";
 import Loading from '../../components/Loading';
 import { viewLogStyles as styles } from './styles';
 import Link from '../../components/Link';
@@ -29,11 +30,18 @@ class ViewLog extends React.Component {
     error: null,
   };
 
-  componentWillMount() {
-    this.getNoteInfo(this.props);
-    this.props.navigation.setParams({ deleteLog: this._deleteLog });
+  componentDidMount() {
+    const { navigation } = this.props;
+    this.focusListener = navigation.addListener("didFocus", () => {
+      this.getNoteInfo(this.props);
+      this.props.navigation.setParams({ deleteLog: this._deleteLog });
+    });
   }
-  
+
+  componentWillUnmount() {
+    // Remove the event listener
+    this.focusListener.remove();
+  }
 
   _deleteLog = () => {
     const logId = this.props.navigation.getParam('id');
@@ -156,4 +164,4 @@ class ViewLog extends React.Component {
 
 }
 
-export default ViewLog;
+export default withNavigation(ViewLog);
