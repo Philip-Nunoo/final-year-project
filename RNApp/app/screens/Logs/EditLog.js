@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { View, Text } from 'react-native';
+import { View, Text, Alert } from 'react-native';
 import KeyboardSpacer from 'react-native-keyboard-spacer';
 import Meteor from 'react-native-meteor';
 import ToggleSwitch from 'toggle-switch-react-native';
@@ -18,7 +18,7 @@ class EditLog extends React.Component {
   };
 
   state = {
-    doc: { issueReport: false, },
+    doc: { issueReport: false, send: false },
     error: null,
   };
 
@@ -48,6 +48,7 @@ class EditLog extends React.Component {
           title: doc.title,
           details: doc.details,
           issueReport: doc.issueReport,
+          send: doc.send,
         },
       });
     }
@@ -101,11 +102,42 @@ class EditLog extends React.Component {
     }
   }
 
+  updateAndSend = () => {
+    if (this.validInput()) {
+      Alert.alert(
+        'Send Report',
+        'This would send an email to our standby coordinators to assist you. Do you want to continue?',
+        [
+          {
+            text: 'Cancel',
+            style: 'cancel',
+          },
+          {
+            text: 'Yes',
+            onPress: () => {
+              const { doc } = this.state;
+
+              this.setState({ doc: { ...doc, send: true } }, () => {
+                this.editLog();
+              });
+            },
+          },
+        ],
+        { cancelable: false },
+      );
+    }
+  }
+
   render() {
     const { doc, id, error } = this.state;
 
     return (
       <View style={styles.container}>
+        <View style={styles.mail}>
+          <Text style={styles.mailText}>
+            Message already sent
+          </Text>
+        </View>
         <Text style={styles.headerText}>Editting log</Text>
         <InputWrapper>
           <GenericTextInput
@@ -116,6 +148,7 @@ class EditLog extends React.Component {
               ...doc,
               title
             }})}
+            editable={!doc.send}
           />
         </InputWrapper>
         <InputWrapper>
@@ -129,12 +162,13 @@ class EditLog extends React.Component {
               ...doc,
               details
             }})}
+            editable={!doc.send}
           />
         </InputWrapper>
         <View style={{ marginTop: 10 }}>
           <ToggleSwitch
-            isOn={doc.issueReport}
-            label='Send issue to agent'
+            isOn={doc.anonymous}
+            label='Make anonymous'
             onToggle={issueReport => this.setState({ doc: {
               ...doc,
               issueReport
@@ -158,11 +192,19 @@ class EditLog extends React.Component {
             {error}
           </Text>
         </View>
-        <View style={styles.button}>
+        <View style={styles.buttonGroup}>
           <Button
-            text="Edit Log"
+            text="Update"
             onPress={this.editLog}
+            style={styles.button}
           />
+          {!doc.send &&
+          <Button
+            text="Update &amp; Send"
+            onPress={this.updateAndSend}
+            style={styles.button}
+          />
+          }
         </View>
         <KeyboardSpacer />
       </View>

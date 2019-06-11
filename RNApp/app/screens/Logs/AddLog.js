@@ -21,6 +21,7 @@ class AddLog extends React.Component {
     doc: {
       issueReport: false,
       anonymous: false,
+      send: false,
     },
     error: null,
   };

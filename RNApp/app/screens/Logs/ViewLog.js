@@ -104,17 +104,12 @@ class ViewLog extends React.Component {
         {
           log ?
           <React.Fragment>
-            {log.mail &&
-              <View style={styles.mail}>
-                <Text style={[styles.mailText]}>
-                  This issue has message
-                </Text>
-                <Link
-                  style={[styles.mailText, styles.linkText]}
-                  text="View messages"
-                  onPress={() => navigation.navigate('ViewMessages', { id: logId })}
-                />
-              </View>
+            {!log.send &&
+            <View style={styles.mail}>
+              <Text style={styles.mailText}>
+                Go to edit page to send this report
+              </Text>
+            </View>
             }
             <View style={styles.body}>
               <Text style={styles.title}>
@@ -135,6 +130,15 @@ class ViewLog extends React.Component {
               >
                 <Ionicon name="md-create" style={styles.actionButtonIcon} />
               </ActionButton.Item>
+              {log.mail &&
+              <ActionButton.Item
+                buttonColor='#3498db'
+                title="Message"
+                // onPress={() => navigation.navigate('ViewMessages', { id: logId })}
+              >
+                <Ionicon name="md-chatboxes" style={styles.actionButtonIcon} />
+              </ActionButton.Item>
+              }
               <ActionButton.Item
                 buttonColor='rgba(231,76,60,1)'
                 title="Remove"

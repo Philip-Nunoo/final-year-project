@@ -21,6 +21,16 @@ export const addLogStyles = StyleSheet.create({
     color: colors.errorText,
     fontSize: 14,
   },
+  mail: {
+    padding: 10,
+    backgroundColor: '#0E8A9B',
+    flexDirection: 'row',
+    justifyContent: 'space-between'
+  },
+  mailText: {
+    color: '#FFFFFF',
+    fontSize: 12,
+  },
   buttonGroup:{
     // justifyContent: 'space-evenly',
     position: 'absolute',
