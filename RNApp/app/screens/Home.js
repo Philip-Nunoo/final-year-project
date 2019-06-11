@@ -14,6 +14,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: colors.background,
+    paddingTop: 10,
   },
   noteLogs: {
     flex: 1,
@@ -101,7 +102,7 @@ container.navigationOptions = ({ navigation }) => {
       <Icon
         name="ios-add"
         size={32}
-        style={{ marginRight: 18, color: '#000' }}
+        style={{ marginRight: 18, color: '#FFF' }}
         onPress={() => navigation.navigate('AddLog')}
       />
     ),

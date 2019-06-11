@@ -3,27 +3,53 @@ import PropTypes from 'prop-types';
 import moment from 'moment';
 import { View, Text, TouchableNativeFeedback } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
+import IonIcon from 'react-native-vector-icons/Ionicons';
 import MaterialCommunityIcon from 'react-native-vector-icons/MaterialCommunityIcons';
 // import Meteor from 'react-native-meteor';
 import styles from './styles';
+import LinearGradient from 'react-native-linear-gradient';
 
 // const getUserName = (userId) => {
 //   const user = Meteor.collection('users').findOne(userId);
 //   return user ? user.emails[0].address : '-';
 // };
 
-const NoteRow = ({ _id, title, details, mail, createdAt, navigation }) => (
+const NoteRow = ({
+  _id, title, details, mail, send,
+  createdAt, anonymous, navigation
+}) => (
   <TouchableNativeFeedback
     onPress={() => navigation.navigate('ViewLog', { id: _id })}
   >
-    <View style={styles.container}>
-      <View>
-        <Text style={styles.title}>{title}</Text>
-        <Text style={styles.details}>{details}</Text>
+    <View>
+      <View style={styles.container}>
+        <View>
+          <LinearGradient
+            colors={['#485563', '#29323c']}
+            style={styles.header}
+            start={{ x: 0, y: 0 }}
+            end={{ x: 1, y: 0 }}
+          >
+            <View>
+              <Text style={styles.title}>{title}</Text>
+            </View>
+            <View style={styles.horizontal}>
+              {anonymous &&
+              <Icon name="snapchat-ghost" style={[styles.hiconlogo, { color: '#FFF' }]} />
+              }
+              {send &&
+              <IonIcon name="ios-send" style={[styles.hiconlogo, { color: '#FFF' }]} />
+              }
+            </View>
+          </LinearGradient>
+          <View style={styles.detailContainer}>
+            <Text style={styles.details}>{details}</Text>
+          </View>
+        </View>
       </View>
       <View style={styles.footer}>
         <View>
-          <Icon name="snapchat-ghost" style={{ color: '#220A82' }} />
+          
         </View>
         <View style={styles.footerLeft}>
           {mail &&

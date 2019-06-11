@@ -59,7 +59,7 @@ class ViewMessages extends React.Component {
   }
 }
 
-const container = createContainer(() => {
+const container = createContainer(({}) => {
   const handle = Meteor.subscribe('note.detail', noteId);
   const note = handle.ready() ? 
     Meteor.collection('notes').findOne(noteId) :

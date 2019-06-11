@@ -18,7 +18,7 @@ class EditLog extends React.Component {
   };
 
   state = {
-    doc: { issueReport: false, send: false },
+    doc: { issueReport: false, send: false, anonymous: false },
     error: null,
   };
 
@@ -49,6 +49,7 @@ class EditLog extends React.Component {
           details: doc.details,
           issueReport: doc.issueReport,
           send: doc.send,
+          anonymous: doc.anonymous
         },
       });
     }

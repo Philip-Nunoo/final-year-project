@@ -3,7 +3,6 @@ import { StyleSheet } from 'react-native';
 const noteRowStyles = StyleSheet.create({
   container: {
     flex: 1,
-    padding: 10,
     paddingBottom: 5,
     backgroundColor: '#FFFFFF',
     elevation: 2,
@@ -13,18 +12,35 @@ const noteRowStyles = StyleSheet.create({
     marginTop: 4,
     marginBottom: 4,
   },
+  header:{
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    padding: 5,
+    paddingLeft: 12,
+    borderTopLeftRadius: 5,
+    borderTopRightRadius: 5,
+    // borderRadius: 10,
+  },
+  horizontal: {
+    flexDirection: 'row',
+    marginRight: 8,
+  },
+  hiconlogo: {
+    marginLeft: 10,
+  },
   title: {
-    fontSize: 16,
-    color: '#000',
+    fontSize: 14,
+    color: '#FFF',
+    fontWeight: 'normal',
+  },
+  detailContainer: {
+    padding: 10,
   },
   details: {
-    fontSize: 11,
-    fontStyle: 'italic',
+    fontSize: 13,
+    color: '#8a8a8a'
   },
   footer: {
-    borderTopColor: '#000',
-    borderTopWidth: 1,
-    marginTop: 10,
     padding: 8,
     paddingLeft: 10,
     paddingRight: 10,
@@ -33,7 +49,8 @@ const noteRowStyles = StyleSheet.create({
     flexDirection: 'row',
   },
   footerText: {
-    fontSize: 11,
+    fontSize: 10,
+    fontStyle: 'italic'
   },
   footerLeft: {
     flexDirection: 'row',
