@@ -138,7 +138,7 @@ class ViewLog extends React.Component {
               >
                 <Ionicon name="md-create" style={styles.actionButtonIcon} />
               </ActionButton.Item>
-              {log.mail &&
+              {log.mail || log.send &&
               <ActionButton.Item
                 buttonColor='#3498db'
                 title="Message"

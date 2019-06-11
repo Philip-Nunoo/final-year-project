@@ -170,9 +170,9 @@ class EditLog extends React.Component {
           <ToggleSwitch
             isOn={doc.anonymous}
             label='Make anonymous'
-            onToggle={issueReport => this.setState({ doc: {
+            onToggle={anonymous => this.setState({ doc: {
               ...doc,
-              issueReport
+              anonymous
             }})}
           />
         </View>

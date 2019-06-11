@@ -1,10 +1,9 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
-import { View, StyleSheet } from 'react-native';
 import IonIcon from 'react-native-vector-icons/Ionicons';
 import LinearGradient from 'react-native-linear-gradient';
 import {
-  Header, createAppContainer, createStackNavigator, createBottomTabNavigator,
+  createAppContainer, createStackNavigator, createBottomTabNavigator,
 } from 'react-navigation';
 
 import Home from '../screens/Home';
@@ -14,9 +13,7 @@ import SignIn from '../screens/SignIn';
 import { AddLog, EditLog, ViewLog, ViewMessages } from '../screens/Logs';
 
 export const AuthStack = createAppContainer(createStackNavigator({
-  SignIn: {
-    screen: SignIn,
-  },
+  SignIn: { screen: SignIn },
 }, {
   headerMode: 'none',
 }));
@@ -80,13 +77,6 @@ export const ProfileStack = createStackNavigator({
   headerMode: 'none',
 });
 
-const styles = {
-  icon: {
-    height: 30,
-    width: 30,
-  },
-};
-
 export const Tabs = createAppContainer(createBottomTabNavigator({
   Home: {
     screen: HomeStack,
@@ -96,12 +86,8 @@ export const Tabs = createAppContainer(createBottomTabNavigator({
         <IonIcon
           name="ios-home"
           size={28}
-          style={[styles.icon, { color: tintColor }]}
+          style={{ color: tintColor }}
         />
-        // <Image
-        //   style={[styles.icon, { tintColor }]}
-        //   source={homeIcon}
-        // />
       ),
     },
   },
@@ -112,15 +98,15 @@ export const Tabs = createAppContainer(createBottomTabNavigator({
       tabBarIcon: ({ tintColor }) => (
         <IonIcon
           name="ios-settings"
-          size={28}
-          style={[styles.icon, { color: tintColor }]}
+          size={26}
+          style={{ color: tintColor }}
         />
       ),
     },
   },
 }, {
   tabBarOptions: {
-    activeTintColor: '#10356c',
+    activeTintColor: '#6f86d6',
     inactiveTintColor: 'gray',
   },
 }));
