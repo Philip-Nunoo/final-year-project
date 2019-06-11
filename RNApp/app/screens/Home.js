@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { StyleSheet, Text, View } from 'react-native';
 import createContainer from 'react-native-meteor/src/components/createContainer';
 import Meteor from 'react-native-meteor';
-import Icon from 'react-native-vector-icons/EvilIcons';
+import Icon from 'react-native-vector-icons/Ionicons';
 import { ScrollView } from 'react-native-gesture-handler';
 import Button from '../components/Button';
 import { colors } from '../config/styles';
@@ -99,9 +99,9 @@ container.navigationOptions = ({ navigation }) => {
     headerTitle: 'Home',
     headerRight: (
       <Icon
-        name="pencil"
-        size={30}
-        style={{ marginRight: 10, color: '#000' }}
+        name="ios-add"
+        size={32}
+        style={{ marginRight: 18, color: '#000' }}
         onPress={() => navigation.navigate('AddLog')}
       />
     ),
