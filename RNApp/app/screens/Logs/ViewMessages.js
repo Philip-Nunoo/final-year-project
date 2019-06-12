@@ -14,7 +14,7 @@ class ViewMessages extends React.Component {
       messages: [
         {
           _id: 1,
-          text: 'Hello developer',
+          text: 'Hi',
           createdAt: new Date(),
           user: {
             _id: 1,
@@ -60,17 +60,17 @@ class ViewMessages extends React.Component {
 }
 
 const container = createContainer(({}) => {
-  const handle = Meteor.subscribe('note.detail', noteId);
-  const note = handle.ready() ? 
-    Meteor.collection('notes').findOne(noteId) :
-    {};
-  const mails = note.mail ? note.mail.messages.map((message) => ({
-    ...message
-  })) : []; 
+  // const handle = Meteor.subscribe('note.detail', noteId);
+  // const note = handle.ready() ? 
+  //   Meteor.collection('notes').findOne(noteId) :
+  //   {};
+  // const mails = note.mail ? note.mail.messages.map((message) => ({
+  //   ...message
+  // })) : []; 
   return {
-    loading: !handle.ready(),
-    note,
-    messages: mails
+    // loading: !handle.ready(),
+    // note,
+    // messages: mails
   };
 }, ViewMessages);
 

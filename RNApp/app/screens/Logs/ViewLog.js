@@ -142,7 +142,7 @@ class ViewLog extends React.Component {
               <ActionButton.Item
                 buttonColor='#3498db'
                 title="Message"
-                // onPress={() => navigation.navigate('ViewMessages', { id: logId })}
+                onPress={() => navigation.navigate('ViewMessages', { id: logId })}
               >
                 <Ionicon name="md-chatboxes" style={styles.actionButtonIcon} />
               </ActionButton.Item>
