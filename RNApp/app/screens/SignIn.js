@@ -8,7 +8,7 @@ import KeyboardSpacer from 'react-native-keyboard-spacer';
 import { colors } from '../config/styles';
 import Button from '../components/Button';
 import GenericTextInput, { InputWrapper } from '../components/GenericTextInput';
-import logoImage from '../images/rn-logo.png';
+import logoImage from '../images/ddiary.png';
 
 const window = Dimensions.get('window');
 const styles = StyleSheet.create({
@@ -16,10 +16,15 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: colors.background,
+    // backgroundColor: colors.background,
   },
   buttons: {
     flexDirection: 'row',
+    position: 'absolute',
+    bottom: 0,
+  },
+  buttonItem: {
+    flex: 1,
   },
   error: {
     height: 28,
@@ -142,8 +147,7 @@ class SignIn extends Component {
             source={logoImage}
           />
 
-          <Text style={styles.headerText}>React Native Meteor</Text>
-          <Text style={styles.subHeaderText}>Boilerplate</Text>
+          <Text style={styles.headerText}>Digital Diary</Text>
         </View>
 
         <InputWrapper>
@@ -174,8 +178,8 @@ class SignIn extends Component {
         </View>
 
         <View style={styles.buttons}>
-          <Button text="Sign In" onPress={this.handleSignIn} />
-          <Button text="Create Account" onPress={this.handleCreateAccount} />
+          <Button text="Sign In" style={styles.buttonItem} onPress={this.handleSignIn} />
+          <Button text="Create Account" style={styles.buttonItem} onPress={this.handleCreateAccount} />
         </View>
 
         <KeyboardSpacer />
