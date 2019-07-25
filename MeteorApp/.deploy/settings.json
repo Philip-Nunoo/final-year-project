@@ -1,0 +1,15 @@
+{
+  "public": {
+
+  },
+  "private": {
+    "smtp": {
+      "username": "ketay99@gmail.com",
+      "password": "HB1UgSr5NcqbIZLs",
+      "server": "smtp-relay.sendinblue.com",
+      "port": 587
+    },
+    "smtpUrl": "smtp://phanunoo:yDe7EENiKry7p6S@smtp.sendgrid.net:587",
+    "appPassword": "emqtulccjhcmzirn"
+  }
+}
